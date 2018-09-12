@@ -1,0 +1,23 @@
+# ignore emacs swap files
+*~
+
+# ignore vim swap files
+*.swp
+
+# ignore performance profiling data
+gmon.out
+
+# ignore slm files
+*.slm
+
+# ignore IPs
+fe/ips
+ipstools
+.cached_ipdb.json
+__pycache__
+
+# ignore Vivado log, temporary files and bitstreams
+*.jou
+*.log
+*_pid*.str
+*.bit

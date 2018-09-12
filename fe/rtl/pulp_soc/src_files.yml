@@ -1,0 +1,20 @@
+pulp_soc:
+  incdirs: [
+    ../includes,
+  ]
+  files: [
+    apb_soc_ctrl.sv,
+    axi2apb_wrap.sv,
+    axi_id_remap_wrap.sv,
+    axi_mem_if_wrap.sv,
+    axi_node_intf_wrap.sv,
+    axi_node_intf_wrap_with_slices.sv,
+    axi_rab_wrap.sv,
+    axi_slice_wrap.sv,
+    l2_generic.sv,
+    l2_mem.sv,
+    soc_bus_wrap.sv,
+    soc_peripherals.sv,
+    pulp_cluster_wrap.sv,
+    pulp_soc.sv,
+  ]

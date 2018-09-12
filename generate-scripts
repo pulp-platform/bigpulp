@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+# Francesco Conti <f.conti@unibo.it>
+#
+# Copyright (C) 2016-2018 ETH Zurich, University of Bologna.
+# All rights reserved.
+
+from ipstools_cfg import *
+
+# creates an IPApproX database
+ipdb = ipstools.IPDatabase(rtl_dir='fe/rtl', ips_dir='fe/ips', load_cache=True)
+
+# generate Vivado src_files.tcl
+ipdb.export_vivado(script_path="fpga/pulp_cluster/tcl/ips_src_files.tcl", domain='cluster')
+ipdb.export_vivado(script_path="fpga/pulp_cluster/tcl/rtl_src_files.tcl", domain='cluster', source='rtl')
+ipdb.export_vivado(script_path="fpga/pulp_soc/tcl/ips_src_files.tcl",     domain='soc'    )
+ipdb.export_vivado(script_path="fpga/pulp_soc/tcl/rtl_src_files.tcl",     domain='soc'    , source='rtl')
+
+# generate Vivado add_files.tcl
+ipdb.generate_vivado_add_files("fpga/pulp_cluster/tcl/ips_add_files.tcl", domain='cluster')
+ipdb.generate_vivado_add_files("fpga/pulp_cluster/tcl/rtl_add_files.tcl", domain='cluster', source='rtl')
+ipdb.generate_vivado_add_files("fpga/pulp_soc/tcl/ips_add_files.tcl",     domain='soc'    )
+ipdb.generate_vivado_add_files("fpga/pulp_soc/tcl/rtl_add_files.tcl",     domain='soc'    , source='rtl')
+
+# generate Vivado inc_dirs.tcl
+ipdb.generate_vivado_inc_dirs("fpga/pulp_cluster/tcl/ips_inc_dirs.tcl", domain='cluster')
+ipdb.generate_vivado_inc_dirs("fpga/pulp_soc/tcl/ips_inc_dirs.tcl"    , domain='soc'    )
+
+print(tcolors.OK + "Generated new scripts for IPs!" + tcolors.ENDC)

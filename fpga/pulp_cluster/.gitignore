@@ -1,0 +1,9 @@
+# auto-generated scripts
+tcl/ips_add_files.tcl
+tcl/ips_src_files.tcl
+tcl/ips_inc_dirs.tcl
+tcl/rtl_add_files.tcl
+tcl/rtl_src_files.tcl
+
+# auto-generated files
+pulp_cluster_funcsim.v

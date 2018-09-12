@@ -1,0 +1,75 @@
+#
+# List of IPs and relative branch/commit-hash/tag.
+# Uses the YAML syntax.
+#
+# Examples:
+#
+#   or10n:
+#     commit: tags/PULP3_final
+#     domain: [cluster]
+#   udma:
+#     commit: 62b10440
+#     domain: [soc]
+#   axi_slice:
+#     commit: master
+#     domain: [soc,cluster]
+# If a *tag* or *commit* is referenced, the IP will be in a
+#  state of DETACHED HEAD. Before committing any additional
+#  work, make sure to checkout a branch.
+#
+
+# SoC
+apb/apb_uart:
+  commit: 3bc0006c070b0b9c18719586cab2845cd6e8b63c
+  domain: [soc]
+  group: pulp-platform
+axi/axi_id_remap:
+  commit: v0.1.0
+  domain: [soc]
+  group: pulp-platform
+axi/axi_mem_if:
+  commit: d1ca159ab5f4fa63399c03b6f18e42ae65581f34
+  domain: [soc]
+  group: pulp-platform
+axi/axi_rab:
+  commit: v0.1.0
+  domain: [soc]
+  group: pulp-platform
+axi/axi2apb:
+  commit: b4c915fcd9526ab6e7378a3e43555189c898b89a
+  domain: [soc]
+  group: pulp-platform
+
+# cluster + SoC
+axi/axi_node:
+  commit: 2f1e322c07b483990f31b22e20b8db635b1bec97
+  group: pulp-platform
+axi/axi_slice:
+  commit: f8886bd3f2d4967aaccff15b67bf1f9e1a0e3453
+  group: pulp-platform
+axi/axi_slice_dc:
+  commit: a755b1d84a605a45d6e63d71996370bbf473542f
+  group: pulp-platform
+common_cells:
+  commit: 5b7021208a3ff818a617b497c5b5564f412fe0a8
+  group: pulp-platform
+fpga-support:
+  commit: v0.3.2
+  group: pulp-platform
+pkg/cfmath:
+  commit: v0.1.0
+  group: pulp-platform
+
+# cluster
+riscv:
+  commit: eba3e9a0de5fe351fa527e2e4280523bc6e638bc
+  domain: [cluster]
+  group: pulp-platform
+pulp_cluster:
+  commit: b72197295b744f4d4ef07e5cba23442878d1e539
+  domain: [cluster]
+  group: pulp-platform
+apu_cluster:
+  commit: 6278034f5d15c6628fbdbbe0611c10eaa9a1b0d7
+  domain: [cluster]
+  group: pulp-platform
