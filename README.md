@@ -25,7 +25,7 @@ https://arxiv.org/abs/1712.06497 and the HERO website https://www.pulp-platform.
 
 Detailed HOWTOs on how to build and use the HERO platform can be found here:
 
-<p align="center">https://iis-people.ee.ethz.ch/~vogelpi/hero/</p>
+<p align="center">https://pulp-platform.org/hero/doc/</p>
 
 
 For more information about the PULP project in general, please refer to the official PULP platform website:
@@ -87,7 +87,7 @@ or the Juno ARM Development Platform, enter the corresponding directory, i.e.,
 
 How to create a bootable HERO system image using the generated FPGA bitstream is
 is shown in a detailed HOWTO at:
-https://iis-people.ee.ethz.ch/~vogelpi/hero/software/host
+https://pulp-platform.org/hero/doc/software
 
 ### Simulating the FPGA design
 To debug the bigPULP platform, this repository provides a set of simulation
