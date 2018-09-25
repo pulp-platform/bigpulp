@@ -10,7 +10,7 @@ HERO consists of many different hard- and software components. This repository
 contains the bigPULP hardware platform, i.e., the sources and build scripts to
 generate the FPGA bitstream implementing the RISC-V manycore accelerator of HERO.
 
-Being the big brother of the open-source, multi-core, Parallel Ultra-Low Power
+Being the big brother of the open-source, multicore, Parallel Ultra-Low Power
 (PULP) computing platform jointly developed by ETH Zurich and the
 University of Bologna, bigPULP is based on the same cluster architecture and
 sources. Depending on the target FPGA, bigPULP uses one or multiple PULP clusters
@@ -45,7 +45,7 @@ This will download all the required IPs, solve dependencies and generate the
 scripts by calling `./generate-scripts`.
 
 Then, enter the `fpga` directory and adjust the `sourceme.sh` script. Select
-the target board and ajdust the path to the Vivado-specific simluation libraries.
+the target board and adjust the path to the Vivado-specific simulation libraries.
 
 Source the `sourceme.sh` script:
 ```
@@ -69,7 +69,7 @@ to start Xilinx Vivado and synthesize the cluster netlist. Afterwards, run
 ```
 make synth-pulp_soc
 ```
-to start Xilinx Vivado and synthesize the SoC containing possibly mutliple
+to start Xilinx Vivado and synthesize the SoC containing possibly multiple
 clusters as well as SoC-level IP cores.
 
 Finally, the top-level design containing the bigPULP SoC and the interfaces
@@ -81,7 +81,7 @@ make clean gui
 to start Xilinx Vivado, synthesize the top-level netlist and generate the
 FPGA bitstream.
 
-**NOTE**: When targetting other platforms such as the Xilinx Zynq UltraScale+ MPSoC
+**NOTE**: When targeting other platforms such as the Xilinx Zynq UltraScale+ MPSoC
 or the Juno ARM Development Platform, enter the corresponding directory, i.e.,
 `bigpulp-zux` or `bigpulp`, respectively.
 
@@ -123,7 +123,7 @@ make clean gui
 ```
 to start Xilinx Vivado, compile the entire design and start the RTL simulation.
 
-**NOTE**: When targetting other platforms such as the Xilinx Zynq UltraScale+ MPSoC
+**NOTE**: When targeting other platforms such as the Xilinx Zynq UltraScale+ MPSoC
 or the Juno ARM Development Platform, enter the corresponding directory, i.e.,
 `sim-bigpulp-zux/vivado` or `sim-bigpulp/vivado`, respectively.
 
@@ -148,19 +148,19 @@ repository is structured as follows:
     generate the bigPULP bitstream and Xilinx SDK files for HERO based on
     Xilinx Zynq-7000 SoCs.
   - `fpga/sim-bigpulp-z-70xx`: Vivado scripts and testbenches to simulate
-    bigPULP when targetting Xilinx Zynq-7000 SoCs.
+    bigPULP when targeting Xilinx Zynq-7000 SoCs.
   - `fpga/bigpulp-zux`: Vivado build scripts and top-level RTL files to
      generate the bigPULP bitstream, Xilinx SDK and PetaLinux input files
      for HERO based on Xilinx Zynq UltraScale+ MPSoCs.
   - `fpga/sim-bigpulp-zux`: Vivado scripts and testbenches to simulate bigPULP
-    when targetting Xilinx Zynq UltraScale+ MPSoCs.
+    when targeting Xilinx Zynq UltraScale+ MPSoCs.
   - `fpga/bigpulp`: Vivado build scripts and support files to generate the
     multicluster bigPULP bitstream for HERO based on the
     ARM Juno Development Platform.
   - `fpga/sim-bigpulp`: Vivado scripts and testbenches to simulate bigPULP when
-    targetting the ARM Juno Development Platform.
+    targeting the ARM Juno Development Platform.
 
-- `ipstools` contains the utils to download and manage the IPs and their
+- `ipstools` contains the utilities to download and manage the IPs and their
   dependencies.
 - `ips_list.yml` contains the list of IPs required directly by the platform.
   Notice that each of them could in turn depend on other IPs, so you will
