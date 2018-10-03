@@ -9,6 +9,7 @@
 DEFAULT_SERVER = "https://github.com"
 
 IPSTOOLS_DIR = 'ipstools'
+IPSTOOLS_COMMIT = '16db053f44f632b37198325ba339f9ebda14efa3'
 
 #################################
 ## DO NOT EDIT BELOW THIS LINE ##
@@ -41,7 +42,7 @@ def execute_out(cmd, silent=False):
 # Strip trailing slashes from `DEFAULT_SERVER`.
 DEFAULT_SERVER = DEFAULT_SERVER.rstrip('/')
 
-# Download latest IPApproX tools into `./IPSTOOLS_DIR` and import them.
+# Update IPApproX tools in `./IPSTOOLS_DIR` to specified commit and import them.
 if not os.path.exists(IPSTOOLS_DIR):
     delim = ':' if '@' in DEFAULT_SERVER else '/'
     execute("git clone {}{}pulp-platform/IPApproX {}".format(DEFAULT_SERVER, delim, IPSTOOLS_DIR))
@@ -49,6 +50,7 @@ elif not os.path.isdir(IPSTOOLS_DIR):
     sys.exit("Error: '{}' exists but is not a directory!".format(IPSTOOLS_DIR))
 cwd = os.getcwd()
 os.chdir(IPSTOOLS_DIR)
-execute("git pull", silent=True)
+execute("git fetch --all", silent=True)
+execute("git checkout {}".format(IPSTOOLS_COMMIT))
 os.chdir(cwd)
 import ipstools
