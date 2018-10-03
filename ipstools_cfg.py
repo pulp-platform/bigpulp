@@ -45,8 +45,7 @@ if os.path.exists("ipstools") and os.path.isdir("ipstools"):
     os.chdir("ipstools")
     execute("git pull", silent=True)
     os.chdir(cwd)
-    import ipstools
 else:
     delim = ':' if '@' in DEFAULT_SERVER else '/'
     execute("git clone {}{}pulp-platform/IPApproX ipstools".format(DEFAULT_SERVER, delim))
-    import ipstools
+import ipstools
