@@ -28,7 +28,7 @@ def execute(cmd, silent=False):
         stdout = None
     ret = subprocess.call(cmd.split(), stdout=stdout)
     if silent:
-        devnull.close()  
+        devnull.close()
     return ret
 
 def execute_out(cmd, silent=False):
