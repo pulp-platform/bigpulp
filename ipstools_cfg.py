@@ -39,13 +39,13 @@ def execute_out(cmd, silent=False):
 # Strip trailing slashes from `DEFAULT_SERVER`.
 DEFAULT_SERVER = DEFAULT_SERVER.rstrip('/')
 
-# download latest IPApproX tools in ./ipstools and import them
-if os.path.exists("ipstools") and os.path.isdir("ipstools"):
+# Download latest IPApproX tools into `./IPSTOOLS_DIR` and import them.
+if os.path.exists(IPSTOOLS_DIR) and os.path.isdir(IPSTOOLS_DIR):
     cwd = os.getcwd()
-    os.chdir("ipstools")
+    os.chdir(IPSTOOLS_DIR)
     execute("git pull", silent=True)
     os.chdir(cwd)
 else:
     delim = ':' if '@' in DEFAULT_SERVER else '/'
-    execute("git clone {}{}pulp-platform/IPApproX ipstools".format(DEFAULT_SERVER, delim))
+    execute("git clone {}{}pulp-platform/IPApproX {}".format(DEFAULT_SERVER, delim, IPSTOOLS_DIR))
 import ipstools
