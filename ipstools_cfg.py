@@ -8,6 +8,8 @@
 # and you want to push things there
 DEFAULT_SERVER = "https://github.com"
 
+IPSTOOLS_DIR = 'ipstools'
+
 #################################
 ## DO NOT EDIT BELOW THIS LINE ##
 #################################
@@ -40,12 +42,13 @@ def execute_out(cmd, silent=False):
 DEFAULT_SERVER = DEFAULT_SERVER.rstrip('/')
 
 # Download latest IPApproX tools into `./IPSTOOLS_DIR` and import them.
-if os.path.exists(IPSTOOLS_DIR) and os.path.isdir(IPSTOOLS_DIR):
-    cwd = os.getcwd()
-    os.chdir(IPSTOOLS_DIR)
-    execute("git pull", silent=True)
-    os.chdir(cwd)
-else:
+if not os.path.exists(IPSTOOLS_DIR):
     delim = ':' if '@' in DEFAULT_SERVER else '/'
     execute("git clone {}{}pulp-platform/IPApproX {}".format(DEFAULT_SERVER, delim, IPSTOOLS_DIR))
+elif not os.path.isdir(IPSTOOLS_DIR):
+    sys.exit("Error: '{}' exists but is not a directory!".format(IPSTOOLS_DIR))
+cwd = os.getcwd()
+os.chdir(IPSTOOLS_DIR)
+execute("git pull", silent=True)
+os.chdir(cwd)
 import ipstools
