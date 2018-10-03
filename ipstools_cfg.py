@@ -36,6 +36,9 @@ def execute_out(cmd, silent=False):
     out, err = p.communicate()
     return out
 
+# Strip trailing slashes from `DEFAULT_SERVER`.
+DEFAULT_SERVER = DEFAULT_SERVER.rstrip('/')
+
 # download latest IPApproX tools in ./ipstools and import them
 if os.path.exists("ipstools") and os.path.isdir("ipstools"):
     cwd = os.getcwd()
