@@ -66,10 +66,6 @@ riscv:
   domain: [cluster]
   group: pulp-platform
 pulp_cluster:
-  commit: b72197295b744f4d4ef07e5cba23442878d1e539
-  domain: [cluster]
-  group: pulp-platform
-apu_cluster:
-  commit: 6278034f5d15c6628fbdbbe0611c10eaa9a1b0d7
+  commit: 8dd05ea2ad2e0298176cdf860e00dc993fabf26d
   domain: [cluster]
   group: pulp-platform
