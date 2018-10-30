@@ -80,7 +80,7 @@ import CfMath::log2;
   `define NB_TCDM_BANKS          4
   `define TCDM_SIZE        32*1024 // Bytes
   `define MCHAN_BURST_LENGTH   256 // max burst size in Bytes - any power of 2 value from 8 to 2048
-  `define NB_OUTSND_BURSTS       8 // max number of outstanding burst transactions
+  `define NB_OUTSND_BURSTS       2 // max number of outstanding burst transactions
    // CACHE
   `define NB_CACHE_BANKS         1
   `define CACHE_SIZE          1024
