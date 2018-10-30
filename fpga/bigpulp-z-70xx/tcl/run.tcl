@@ -96,12 +96,16 @@ launch_runs -jobs 4 {\
   ps7_axi_protocol_converter_2_0_synth_1 \
   ps7_axi_protocol_converter_3_0_synth_1 \
   ps7_axi_protocol_converter_acp_0_synth_1 \
-  ps7_axi_protocol_conv_ar_log_0_synth_1 \
-  ps7_axi_protocol_conv_aw_log_0_synth_1 \
   ps7_axi_pulp_control_0_synth_1 \
   ps7_processing_system7_0_0_synth_1 \
-  ps7_rab_ar_bram_ctrl_host_0_synth_1 \
-  ps7_rab_aw_bram_ctrl_host_0_synth_1 \
+}
+if { $::env(RAB_AX_LOG_EN) } {
+  launch_runs -jobs 4 {\
+    ps7_axi_protocol_conv_ar_log_0_synth_1 \
+    ps7_axi_protocol_conv_aw_log_0_synth_1 \
+    ps7_rab_ar_bram_ctrl_host_0_synth_1 \
+    ps7_rab_aw_bram_ctrl_host_0_synth_1 \
+  }
 }
 
 wait_on_run ps7_axi_clock_converter_0_0_synth_1
@@ -115,12 +119,14 @@ wait_on_run ps7_axi_protocol_converter_1_0_synth_1
 wait_on_run ps7_axi_protocol_converter_2_0_synth_1
 wait_on_run ps7_axi_protocol_converter_3_0_synth_1
 wait_on_run ps7_axi_protocol_converter_acp_0_synth_1
-wait_on_run ps7_axi_protocol_conv_ar_log_0_synth_1
-wait_on_run ps7_axi_protocol_conv_aw_log_0_synth_1
 wait_on_run ps7_axi_pulp_control_0_synth_1
 wait_on_run ps7_processing_system7_0_0_synth_1
-wait_on_run ps7_rab_ar_bram_ctrl_host_0_synth_1
-wait_on_run ps7_rab_aw_bram_ctrl_host_0_synth_1
+if { $::env(RAB_AX_LOG_EN) } {
+  wait_on_run ps7_axi_protocol_conv_ar_log_0_synth_1
+  wait_on_run ps7_axi_protocol_conv_aw_log_0_synth_1
+  wait_on_run ps7_rab_ar_bram_ctrl_host_0_synth_1
+  wait_on_run ps7_rab_aw_bram_ctrl_host_0_synth_1
+}
 
 # create and add wrapper
 make_wrapper -files [get_files ./bigpulp-z-70xx.srcs/sources_1/bd/ps7/ps7.bd] -top
