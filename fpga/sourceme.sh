@@ -14,6 +14,7 @@ if [ "$BOARD" = "zedboard" ]; then
   export CLK_PERIOD_NS="20"
   export RAB_AX_LOG_EN="0"
   export MOD_HOST_CLKS="0"
+  export HOST_CLK_MHZ="667"
   export SDK_WORKSPACE="/scratch/$USER/$BOARD/zynqlinux/sdk"
 elif [ "$BOARD" = "zc706" ]; then
   export XILINX_PART="xc7z045ffg900-2"
