@@ -1,0 +1,2 @@
+restart -f
+run -a
