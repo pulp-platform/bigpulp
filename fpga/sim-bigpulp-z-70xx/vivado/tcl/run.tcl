@@ -288,7 +288,7 @@ set_property top bigpulp_z_70xx_top [current_fileset]
 #                          TESTBENCH
 #
 ##################################################################
-add_files -norecurse ../tb/current/testbench.sv
+add_files -norecurse [glob ../tb/current/*.sv]
 
 # AXI4-Lite traffic generator
 set AXI4LITE_VIP_PATH $::env(AXI4LITE_VIP_PATH)
@@ -316,6 +316,11 @@ set_property -name modelsim.compile.vlog.more_options -value {-suppress 2583} -o
 
 if [file exists ../tb/current/wave.do] {
   set_property -name {modelsim.simulate.custom_wave_do} -value {../../../../tb/current/wave.do} -objects [get_filesets sim_1]
+}
+
+if [file exists ../tb/current/run.do] {
+  set_property -name {modelsim.simulate.custom_udo} -value {../../../../tb/current/run.do} \
+    -objects [get_filesets sim_1]
 }
 
 launch_simulation -simset sim_1 -mode behavioral
