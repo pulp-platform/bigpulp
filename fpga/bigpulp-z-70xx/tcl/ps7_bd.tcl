@@ -89,10 +89,16 @@ set UART_0 [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:uart_rt
 
 if { $::env(RAB_AX_LOG_EN) } {
     set rab_ar_bram [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:bram_rtl:1.0 rab_ar_bram ]
-    set_property -dict [ list CONFIG.MASTER_TYPE {BRAM_CTRL}  ] $rab_ar_bram
+    set_property -dict [ list \
+        CONFIG.MASTER_TYPE {BRAM_CTRL} \
+        CONFIG.READ_WRITE_MODE {READ_WRITE} \
+    ] $rab_ar_bram
 
     set rab_aw_bram [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:bram_rtl:1.0 rab_aw_bram ]
-    set_property -dict [ list CONFIG.MASTER_TYPE {BRAM_CTRL}  ] $rab_aw_bram
+    set_property -dict [ list \
+        CONFIG.MASTER_TYPE {BRAM_CTRL} \
+        CONFIG.READ_WRITE_MODE {READ_WRITE} \
+    ] $rab_aw_bram
 }
 
 # Create ports
