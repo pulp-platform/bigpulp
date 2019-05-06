@@ -4,6 +4,7 @@ set design_name zusys
 # Set IP versions
 if { [version -short] == "2017.2" } {
   set PS_VERSION "3.0"
+  set BRAM_CONTROLLER_VERSION "4.0"
 } else {
   error "Error: Unsupported Vivado version!"
   return 1
@@ -239,7 +240,7 @@ if { $::env(RAB_AX_LOG_EN) } {
     set rab_ar_bram_ctrl_host \
         [ create_bd_cell \
             -type ip \
-            -vlnv xilinx.com:ip:axi_bram_ctrl:4.0 \
+            -vlnv xilinx.com:ip:axi_bram_ctrl:$BRAM_CONTROLLER_VERSION \
             rab_ar_bram_ctrl_host \
         ]
     set_property -dict [ list CONFIG.SINGLE_PORT_BRAM {1} CONFIG.PROTOCOL {AXI4LITE} ] $rab_ar_bram_ctrl_host
@@ -261,7 +262,7 @@ if { $::env(RAB_AX_LOG_EN) } {
     set rab_aw_bram_ctrl_host \
         [ create_bd_cell \
             -type ip \
-            -vlnv xilinx.com:ip:axi_bram_ctrl:4.0 \
+            -vlnv xilinx.com:ip:axi_bram_ctrl:$BRAM_CONTROLLER_VERSION \
             rab_aw_bram_ctrl_host \
         ]
     set_property -dict [ list CONFIG.SINGLE_PORT_BRAM {1} CONFIG.PROTOCOL {AXI4LITE} ] $rab_aw_bram_ctrl_host
