@@ -2,10 +2,7 @@ create_bd_design "zusys"
 set design_name zusys
 
 # Set IP versions
-if { [version -short] == "2016.3" } {
-  set PS_VERSION "2.0"
-  set BLK_MEM_GEN_VERSION "8.3"
-} elseif { [version -short] == "2017.2" } {
+if { [version -short] == "2017.2" } {
   set PS_VERSION "3.0"
   set BLK_MEM_GEN_VERSION "8.3"
 } else {
