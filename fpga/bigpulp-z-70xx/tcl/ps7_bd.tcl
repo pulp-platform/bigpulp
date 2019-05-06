@@ -2,22 +2,7 @@ create_bd_design "ps7"
 set design_name ps7
 
 # Set IP versions
-if { [version -short] == "2016.3" } {
-    set PS7_VERSION "5.5"
-    set XLCONCAT_VERSION "2.1"
-    set BLK_MEM_GEN_VERSION "8.3"
-    set MB_VERSION "10.0"
-} elseif { [version -short] == "2016.1" } {
-    set PS7_VERSION "5.5"
-    set XLCONCAT_VERSION "2.1"
-    set BLK_MEM_GEN_VERSION "8.3"
-    set MB_VERSION "9.6"
-} elseif { [version -short] == "2015.1" } {
-    set PS7_VERSION "5.5"
-    set XLCONCAT_VERSION "2.1"
-    set BLK_MEM_GEN_VERSION "8.2"
-    set MB_VERSION "9.5"
-} elseif { [version -short] == "2017.2" } {
+if { [version -short] == "2017.2" } {
     set PS7_VERSION "5.5"
     set XLCONCAT_VERSION "2.1"
     set BLK_MEM_GEN_VERSION "8.3"
