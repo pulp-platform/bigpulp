@@ -7,11 +7,13 @@ if { [version -short] == "2017.2" } {
   set XLCONCAT_VERSION "2.1"
   set BLK_MEM_GEN_VERSION "8.3"
   set MB_VERSION "10.0"
+  set BRAM_CONTROLLER_VERSION "4.0"
 } elseif { [version -short] == "2018.3" } {
   set PS7_VERSION "5.5"
   set XLCONCAT_VERSION "2.1"
   set BLK_MEM_GEN_VERSION "8.3"
   set MB_VERSION "10.0"
+  set BRAM_CONTROLLER_VERSION "4.1"
 } else {
   error "Error: Unsupported Vivado version!"
   return 1
@@ -187,7 +189,7 @@ if { $::env(RAB_AX_LOG_EN) } {
     set rab_ar_bram_ctrl_host \
         [ create_bd_cell \
             -type ip \
-            -vlnv xilinx.com:ip:axi_bram_ctrl:4.0 \
+            -vlnv xilinx.com:ip:axi_bram_ctrl:$BRAM_CONTROLLER_VERSION \
             rab_ar_bram_ctrl_host \
         ]
     set_property -dict [ list CONFIG.SINGLE_PORT_BRAM {1} CONFIG.PROTOCOL {AXI4LITE} ] $rab_ar_bram_ctrl_host
@@ -210,7 +212,7 @@ if { $::env(RAB_AX_LOG_EN) } {
     set rab_aw_bram_ctrl_host \
         [ create_bd_cell \
             -type ip \
-            -vlnv xilinx.com:ip:axi_bram_ctrl:4.0 \
+            -vlnv xilinx.com:ip:axi_bram_ctrl:$BRAM_CONTROLLER_VERSION \
             rab_aw_bram_ctrl_host \
         ]
     set_property -dict [ list CONFIG.SINGLE_PORT_BRAM {1} CONFIG.PROTOCOL {AXI4LITE} ] $rab_aw_bram_ctrl_host
