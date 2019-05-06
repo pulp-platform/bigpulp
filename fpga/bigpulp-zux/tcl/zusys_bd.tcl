@@ -4,7 +4,6 @@ set design_name zusys
 # Set IP versions
 if { [version -short] == "2017.2" } {
   set PS_VERSION "3.0"
-  set BLK_MEM_GEN_VERSION "8.3"
 } else {
   error "Error: Unsupported Vivado version!"
   return 1
