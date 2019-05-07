@@ -236,7 +236,12 @@ if { $::env(RAB_AX_LOG_EN) } {
             -vlnv xilinx.com:ip:axi_bram_ctrl:$BRAM_CONTROLLER_VERSION \
             rab_ar_bram_ctrl_host \
         ]
-    set_property -dict [ list CONFIG.SINGLE_PORT_BRAM {1} CONFIG.PROTOCOL {AXI4LITE} ] $rab_ar_bram_ctrl_host
+    set_property -dict [ list \
+        CONFIG.SINGLE_PORT_BRAM {1} \
+        CONFIG.PROTOCOL {AXI4LITE} \
+        CONFIG.C_SELECT_XPM {0} \
+    ] $rab_ar_bram_ctrl_host
+    set_property CONFIG.READ_WRITE_MODE READ_WRITE [get_bd_intf_pins $rab_ar_bram_ctrl_host/BRAM_PORTA]
     connect_bd_intf_net \
         [ get_bd_intf_pins axilite_xbar_host_clk/M01_AXI ] \
         [ get_bd_intf_pins rab_ar_bram_ctrl_host/S_AXI ]
@@ -258,7 +263,12 @@ if { $::env(RAB_AX_LOG_EN) } {
             -vlnv xilinx.com:ip:axi_bram_ctrl:$BRAM_CONTROLLER_VERSION \
             rab_aw_bram_ctrl_host \
         ]
-    set_property -dict [ list CONFIG.SINGLE_PORT_BRAM {1} CONFIG.PROTOCOL {AXI4LITE} ] $rab_aw_bram_ctrl_host
+    set_property -dict [ list \
+        CONFIG.SINGLE_PORT_BRAM {1} \
+        CONFIG.PROTOCOL {AXI4LITE} \
+        CONFIG.C_SELECT_XPM {0} \
+    ] $rab_aw_bram_ctrl_host
+    set_property CONFIG.READ_WRITE_MODE READ_WRITE [get_bd_intf_pins $rab_aw_bram_ctrl_host/BRAM_PORTA]
     connect_bd_intf_net \
         [ get_bd_intf_pins axilite_xbar_host_clk/M02_AXI ] \
         [ get_bd_intf_pins rab_aw_bram_ctrl_host/S_AXI ]
@@ -272,6 +282,11 @@ if { $::env(RAB_AX_LOG_EN) } {
     connect_bd_intf_net \
         [ get_bd_intf_pins rab_aw_bram_ctrl_host/BRAM_PORTA ] \
         [ get_bd_intf_ports rab_aw_bram ]
+
+    if { [version -short] == "2018.3" } {
+        set_property CONFIG.READ_WRITE_MODE READ_WRITE [get_bd_intf_ports /rab_ar_bram]
+        set_property CONFIG.READ_WRITE_MODE READ_WRITE [get_bd_intf_ports /rab_aw_bram]
+    }
 }
 
 ####
