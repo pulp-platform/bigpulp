@@ -50,12 +50,6 @@ fi
 export VIVADO_VERSION="2017.2"
 if [ "$VIVADO_VERSION" = "2017.2" ]; then
   export COMPXLIB_PATH="/usr/pack/vivado-2017.2-kgf/DZ_STUFF/compxlib/modelsim-10.6b"
-elif [ "$VIVADO_VERSION" = "2016.3" ]; then
-  export COMPXLIB_PATH="/usr/pack/vivado-2016.3-kgf/DZ_STUFF/compxlib/modelsim-10.5c"
-elif [ "$VIVADO_VERSION" = "2016.1" ]; then
-  export COMPXLIB_PATH="/usr/pack/vivado-2016.1-kgf/DZ_STUFF/compxlib/modelsim-10.4c"
-else # 2015.1
-  export COMPXLIB_PATH="/usr/pack/vivado-2015.1-kgf/DZ_STUFF/compxlib/modelsim-10.2c"
 fi
 
 export AXI4LITE_VIP_PATH="/scratch/$USER/$BOARD/axi4lite_vip"
