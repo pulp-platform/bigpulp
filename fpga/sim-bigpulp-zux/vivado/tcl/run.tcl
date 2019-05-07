@@ -24,6 +24,8 @@ set_property board_part $XILINX_BOARD [current_project]
 
 set PULP_FPGA_SIM 1
 
+source ../../tcl/versions.tcl
+
 ##################################################################
 #
 #                          PULP_CLUSTER
@@ -200,9 +202,9 @@ if { $REPLACE_XILINX_DWIDTH_CONV } {
 
 # replace DDR with BRAM
 if { $REPLACE_XILINX_DWIDTH_CONV } {
-  create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.0 axi_bram_ctrl_0
+  create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:$BRAM_CONTROLLER_VERSION axi_bram_ctrl_0
   set_property -dict [list CONFIG.DATA_WIDTH {64} CONFIG.SINGLE_PORT_BRAM {1}] [get_bd_cells axi_bram_ctrl_0]
-  create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.0 axi_bram_ctrl_1
+  create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:$BRAM_CONTROLLER_VERSION axi_bram_ctrl_1
   set_property -dict [list CONFIG.DATA_WIDTH {64} CONFIG.SINGLE_PORT_BRAM {1}] [get_bd_cells axi_bram_ctrl_1]
   create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:${BLK_MEM_GEN_VERSION} blk_mem_gen_0
   set_property -dict [list CONFIG.Memory_Type {True_Dual_Port_RAM} CONFIG.Write_Depth_A {16384} CONFIG.Enable_B {Use_ENB_Pin} CONFIG.Use_RSTB_Pin {true} CONFIG.Port_B_Clock {100} CONFIG.Port_B_Write_Rate {50} CONFIG.Port_B_Enable_Rate {100}] [get_bd_cells blk_mem_gen_0]
@@ -210,9 +212,9 @@ if { $REPLACE_XILINX_DWIDTH_CONV } {
   connect_bd_intf_net [get_bd_intf_pins axi_clock_conv_rab_acp/M_AXI]    [get_bd_intf_pins axi_bram_ctrl_1/S_AXI]
   connect_bd_intf_net [get_bd_intf_pins axi_clock_conv_rab_master/M_AXI] [get_bd_intf_pins axi_bram_ctrl_0/S_AXI]
 } else {
-  create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.0 axi_bram_ctrl_0
+  create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:$BRAM_CONTROLLER_VERSION axi_bram_ctrl_0
   set_property -dict [list CONFIG.DATA_WIDTH {128} CONFIG.SINGLE_PORT_BRAM {1}] [get_bd_cells axi_bram_ctrl_0]
-  create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.0 axi_bram_ctrl_1
+  create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:$BRAM_CONTROLLER_VERSION axi_bram_ctrl_1
   set_property -dict [list CONFIG.DATA_WIDTH {128} CONFIG.SINGLE_PORT_BRAM {1}] [get_bd_cells axi_bram_ctrl_1]
   create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:${BLK_MEM_GEN_VERSION} blk_mem_gen_0
   set_property -dict [list CONFIG.Memory_Type {True_Dual_Port_RAM} CONFIG.Write_Depth_A {8192} CONFIG.Enable_B {Use_ENB_Pin} CONFIG.Use_RSTB_Pin {true} CONFIG.Port_B_Clock {100} CONFIG.Port_B_Write_Rate {50} CONFIG.Port_B_Enable_Rate {100}] [get_bd_cells blk_mem_gen_0]
