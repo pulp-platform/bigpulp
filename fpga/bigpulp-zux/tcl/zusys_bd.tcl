@@ -1,14 +1,7 @@
 create_bd_design "zusys"
 set design_name zusys
 
-# Set IP versions
-if { [version -short] == "2017.2" } {
-  set PS_VERSION "3.0"
-  set BRAM_CONTROLLER_VERSION "4.0"
-} else {
-  error "Error: Unsupported Vivado version!"
-  return 1
-}
+source ../tcl/versions.tcl
 
 # Create instance: zynq_ultra_ps_e_0, and set properties
 set zynq_ultra_ps_e_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:zynq_ultra_ps_e:$PS_VERSION zynq_ultra_ps_e_0 ]

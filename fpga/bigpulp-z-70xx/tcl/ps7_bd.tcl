@@ -1,23 +1,7 @@
 create_bd_design "ps7"
 set design_name ps7
 
-# Set IP versions
-if { [version -short] == "2017.2" } {
-    set PS7_VERSION "5.5"
-    set XLCONCAT_VERSION "2.1"
-    set BLK_MEM_GEN_VERSION "8.3"
-    set MB_VERSION "10.0"
-    set BRAM_CONTROLLER_VERSION "4.0"
-} elseif { [version -short] == "2018.3" } {
-    set PS7_VERSION "5.5"
-    set XLCONCAT_VERSION "2.1"
-    set BLK_MEM_GEN_VERSION "8.3"
-    set MB_VERSION "10.0"
-    set BRAM_CONTROLLER_VERSION "4.1"
-} else {
-    error "Error: Unsupported Vivado version!"
-    return 1
-}
+source ../tcl/versions.tcl
 
 # Create interface ports
 set clking_axi [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:aximm_rtl:1.0 clking_axi ]

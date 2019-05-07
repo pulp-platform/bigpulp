@@ -1,23 +1,8 @@
 create_bd_design "ic"
 set design_name ic
 
-# Set IP versions
-if { [version -short] == "2017.2" } {
-  set PS7_VERSION "5.5"
-  set XLCONCAT_VERSION "2.1"
-  set BLK_MEM_GEN_VERSION "8.3"
-  set MB_VERSION "10.0"
-  set BRAM_CONTROLLER_VERSION "4.0"
-} elseif { [version -short] == "2018.3" } {
-  set PS7_VERSION "5.5"
-  set XLCONCAT_VERSION "2.1"
-  set BLK_MEM_GEN_VERSION "8.3"
-  set MB_VERSION "10.0"
-  set BRAM_CONTROLLER_VERSION "4.1"
-} else {
-  error "Error: Unsupported Vivado version!"
-  return 1
-}
+source ../tcl/versions.tcl
+
 # Create ports
 set pulp2host_gpio [ create_bd_port -dir I -from 31 -to 0 pulp2host_gpio ]
 set host2pulp_gpio [ create_bd_port -dir O -from 31 -to 0 host2pulp_gpio ]
