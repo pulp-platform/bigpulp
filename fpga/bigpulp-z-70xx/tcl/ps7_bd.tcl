@@ -339,7 +339,7 @@ if { $::env(RAB_AX_LOG_EN) } {
         CONFIG.PROTOCOL {AXI4LITE} \
         CONFIG.C_SELECT_XPM {0} \
     ] $rab_ar_bram_ctrl_host
-    set_property CONFIG.READ_WRITE_MODE READ_WRITE [get_bd_intf_pins /rab_ar_bram_ctrl_host/BRAM_PORTA]
+    set_property CONFIG.READ_WRITE_MODE READ_WRITE [get_bd_intf_pins $rab_ar_bram_ctrl_host/BRAM_PORTA]
     connect_bd_intf_net \
         [ get_bd_intf_pins axi_crossbar_0/M03_AXI ] \
         [ get_bd_intf_pins axi_protocol_conv_ar_log/S_AXI ]
@@ -374,7 +374,7 @@ if { $::env(RAB_AX_LOG_EN) } {
         CONFIG.PROTOCOL {AXI4LITE} \
         CONFIG.C_SELECT_XPM {0} \
     ] $rab_aw_bram_ctrl_host
-    set_property CONFIG.READ_WRITE_MODE READ_WRITE [get_bd_intf_pins /rab_aw_bram_ctrl_host/BRAM_PORTA]
+    set_property CONFIG.READ_WRITE_MODE READ_WRITE [get_bd_intf_pins $rab_aw_bram_ctrl_host/BRAM_PORTA]
     connect_bd_intf_net \
         [ get_bd_intf_pins axi_crossbar_0/M04_AXI ] \
         [ get_bd_intf_pins axi_protocol_conv_aw_log/S_AXI ]
