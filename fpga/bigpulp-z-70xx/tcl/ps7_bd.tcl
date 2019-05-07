@@ -400,7 +400,7 @@ if { $::env(RAB_AX_LOG_EN) } {
     if { [version -short] == "2018.3" } {
        set_property CONFIG.READ_WRITE_MODE READ_WRITE [get_bd_intf_ports /rab_ar_bram]
        set_property CONFIG.READ_WRITE_MODE READ_WRITE [get_bd_intf_ports /rab_aw_bram]
-       }
+    }
 }
 
 # Create address segments
