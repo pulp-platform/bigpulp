@@ -47,9 +47,11 @@ else # juno
   export SDK_WORKSPACE="/scratch/$USER/$BOARD/workspace/sdk"
 fi
 
-export VIVADO_VERSION="2017.2"
+export VIVADO_VERSION="2018.3"
 if [ "$VIVADO_VERSION" = "2017.2" ]; then
   export COMPXLIB_PATH="/usr/pack/vivado-2017.2-kgf/DZ_STUFF/compxlib/modelsim-10.6b"
+elif [ "$VIVADO_VERSION" = "2018.3" ]; then
+  export COMPXLIB_PATH="/usr/pack/vivado-2018.3-kgf/DZ_STUFF/compxlib/modelsim-10.7b"
 fi
 
 export AXI4LITE_VIP_PATH="/scratch/$USER/$BOARD/axi4lite_vip"
