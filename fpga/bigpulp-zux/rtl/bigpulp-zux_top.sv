@@ -158,6 +158,7 @@ module bigpulp_zux_top
   wire [31:0] clking_axi_awaddr;  // input
   wire        clking_axi_awvalid; // input
   wire        clking_axi_awready; // output
+  wire  [2:0] clking_axi_awprot;
   wire [31:0] clking_axi_wdata;   // input
   wire  [3:0] clking_axi_wstrb;   // input
   wire        clking_axi_wvalid;  // input
@@ -166,6 +167,7 @@ module bigpulp_zux_top
   wire        clking_axi_bvalid;  // output
   wire        clking_axi_bready;  // input
   wire [31:0] clking_axi_araddr;  // input
+  wire  [2:0] clking_axi_arprot;
   wire        clking_axi_arvalid; // input
   wire        clking_axi_arready; // output
   wire [31:0] clking_axi_rdata;   // output
@@ -352,6 +354,9 @@ module bigpulp_zux_top
   logic                   RabArLogRdy_S;
   logic                   RabAwLogRdy_S;
 `endif
+
+  assign clking_axi_arprot = '0;
+  assign clking_axi_awprot = '0;
 
   //-------------------------------------------------------------------------
   // AXI Interrupt Register
