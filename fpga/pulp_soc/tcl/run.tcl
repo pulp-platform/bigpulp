@@ -44,7 +44,7 @@ if { $BOARD == "zedboard" } {
     set DEFINES "$DEFINES ZEDBOARD=1"
 } elseif { $BOARD == "juno" } {
     set DEFINES "$DEFINES HOST_IS_64_BIT=1 JUNO=1"
-} elseif { $BOARD == "te0808" } {
+} elseif { $BOARD == "te0808" || $BOARD == "zcu102" } {
     set DEFINES "$DEFINES HOST_IS_64_BIT=1 ZYNQMPSOC=1"
 }
 
@@ -56,7 +56,7 @@ read_ip $FPGA_IPS/xilinx_mailbox/ip/xilinx_mailbox.xci
 synth_ip [get_ips xilinx_mailbox]
 read_ip $FPGA_IPS/xilinx_axi_xbar_rab_cfg/ip/xilinx_axi_xbar_rab_cfg.xci
 synth_ip [get_ips xilinx_axi_xbar_rab_cfg]
-if { ($BOARD != "juno") && ($BOARD != "te0808") } {
+if { ($BOARD != "juno") && ($BOARD != "te0808") && ($BOARD != "zcu102") } {
     read_ip $FPGA_IPS/xilinx_axi_dwidth_conv_rab_cfg/ip/xilinx_axi_dwidth_conv_rab_cfg.xci
     synth_ip [get_ips xilinx_axi_dwidth_conv_rab_cfg]
 }
