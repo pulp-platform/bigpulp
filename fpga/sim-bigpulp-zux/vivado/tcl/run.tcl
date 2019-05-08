@@ -111,7 +111,7 @@ if { $BOARD == "zedboard" } {
     set DEFINES "$DEFINES ZEDBOARD=1"
 } elseif { $BOARD == "juno" } {
     set DEFINES "$DEFINES HOST_IS_64_BIT=1 JUNO=1"
-} elseif { $BOARD == "te0808" } {
+} elseif { $BOARD == "te0808" || $BOARD == "zcu102" } {
     set DEFINES "$DEFINES HOST_IS_64_BIT=1 ZYNQMPSOC=1"
 }
 if { $::env(RAB_AX_LOG_EN) } { set DEFINES "$DEFINES RAB_AX_LOG_EN=1" }
