@@ -9,7 +9,7 @@ set_property board_part $boardName [current_project]
 
 create_ip -name $xilinxIpName -vendor xilinx.com -library ip -module_name $extIpName
 
-if { ($::env(BOARD) == "juno") || ($::env(BOARD) == "te0808") } {
+if { ($::env(BOARD) == "juno") || ($::env(BOARD) == "te0808") || ($::env(BOARD) == "zcu102") } {
     set AXI_LITE_DATA_WIDTH 64
 } else {
     set AXI_LITE_DATA_WIDTH 32

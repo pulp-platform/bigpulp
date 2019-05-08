@@ -52,7 +52,7 @@ if { $BOARD == "zedboard" } {
     CONFIG.CLKOUT2_JITTER             {175.402} \
     CONFIG.CLKOUT2_PHASE_ERROR        {98.575} \
   ] [get_ips xilinx_clock_manager]
-} elseif { $BOARD == "te0808" } {
+} elseif { $BOARD == "te0808" || $BOARD == "zcu102" } {
   # bigpulp-zux: default 100 -> 50 MHz
   set_property -dict [list \
     CONFIG.PRIM_IN_FREQ               {100} \

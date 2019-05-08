@@ -9,7 +9,7 @@ set_property board_part $boardName [current_project]
 
 create_ip -name $xilinxIpName -vendor xilinx.com -library ip -module_name $extIpName
 
-if { ($::env(BOARD) == "juno") || ($::env(BOARD) == "te0808") } {
+if { ($::env(BOARD) == "juno") || ($::env(BOARD) == "te0808") || ($::env(BOARD) == "zcu102") } {
     # This IP is not used on 64-bit hosts, because the RAB Config AXI Lite port is 64 bit as well.
     exit
 }

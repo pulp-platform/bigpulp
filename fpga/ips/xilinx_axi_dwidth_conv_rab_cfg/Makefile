@@ -1,7 +1,7 @@
 PROJECT:=xilinx_axi_dwidth_conv_rab_cfg
 
 all:
-ifneq (,$(filter $(BOARD),juno te0808))
+ifneq (,$(filter $(BOARD),juno te0808 zcu102))
 	@echo "'$(PROJECT)' is not used on 64-bit host platforms."
 else
 	vivado -mode batch -source tcl/run.tcl
