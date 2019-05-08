@@ -47,7 +47,7 @@ if { $BOARD == "zedboard" } {
     set DEFINES "$DEFINES ZEDBOARD=1"
 } elseif { $BOARD == "juno" } {
     set DEFINES "$DEFINES JUNO=1"
-} elseif { $BOARD == "te0808" } {
+} elseif { $BOARD == "te0808" || $BOARD == "zcu102" } {
     set DEFINES "$DEFINES ZYNQMPSOC=1"
 }
 
