@@ -8,7 +8,9 @@ set zynq_ultra_ps_e_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:zynq_ultra_p
 
 # Apply Trenz board preset
 apply_bd_automation -rule xilinx.com:bd_rule:zynq_ultra_ps_e -config {apply_board_preset "1" }  $zynq_ultra_ps_e_0
-source tcl/TEBF0808_diff_TE0808_preset.tcl
+if { $::env(BOARD) == "te0808" } {
+  source tcl/TEBF0808_diff_TE0808_preset.tcl
+}
 
 # Disable PCIE, USB, DP, CAN
 set_property CONFIG.PSU__PCIE__PERIPHERAL__ENABLE        {0} $zynq_ultra_ps_e_0
@@ -23,6 +25,7 @@ set_property CONFIG.PSU__USE__VIDEO      {0} $zynq_ultra_ps_e_0
 
 # Enable proper master interfaces
 set_property CONFIG.PSU__USE__M_AXI_GP0 {1} $zynq_ultra_ps_e_0
+set_property CONFIG.PSU__USE__M_AXI_GP1 {0} $zynq_ultra_ps_e_0
 set_property CONFIG.PSU__USE__M_AXI_GP2 {0} $zynq_ultra_ps_e_0
 
 # Enable proper slave interfaces
@@ -45,6 +48,8 @@ $zynq_ultra_ps_e_0
 
 # define host interconnect and reference clock for clock manager IP core inside bigpulp-zux_top
 set_property CONFIG.PSU__CRL_APB__PL0_REF_CTRL__FREQMHZ "$IC_FREQ_MHZ" $zynq_ultra_ps_e_0
+set IC_FREQ_MHZ [get_property CONFIG.PSU__CRL_APB__PL0_REF_CTRL__ACT_FREQMHZ $zynq_ultra_ps_e_0]
+set IC_FREQ_HZ [expr ${IC_FREQ_MHZ} * 1000000]
 
 # Create interface ports
 set clking_axi [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:aximm_rtl:1.0 clking_axi ]
