@@ -122,7 +122,7 @@ set_property verilog_define $DEFINES [current_fileset -simset]
 if [info exists ::env(CLK_PERIOD_NS)] {
     set CLK_PERIOD_NS $::env(CLK_PERIOD_NS)
 } else {
-	set CLK_PERIOD_NS 10.000
+    set CLK_PERIOD_NS 10.000
 }
 set CLK_HALFPERIOD_NS [expr ${CLK_PERIOD_NS} / 2]
 set FREQ_HZ  [expr 1000000000 / ${CLK_PERIOD_NS}]
