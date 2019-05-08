@@ -15,6 +15,8 @@ set_property board_part $::env(XILINX_BOARD) [current_project]
 
 set PULP_FPGA_SIM 1
 
+source ../../tcl/versions.tcl
+
 ##################################################################
 #
 #                          PULP_CLUSTER
@@ -159,9 +161,9 @@ set_property CONFIG.ASSOCIATED_BUSIF {rab_master:rab_acp} [get_bd_ports /ClkIcPu
 set_property CONFIG.ASSOCIATED_BUSIF {clking_axi} [get_bd_ports /FCLK_CLK0]
 
 # replace DDR with BRAM
-create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.0 axi_bram_ctrl_0
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:$BRAM_CONTROLLER_VERSION axi_bram_ctrl_0
 set_property -dict [list CONFIG.DATA_WIDTH {64} CONFIG.SINGLE_PORT_BRAM {1}] [get_bd_cells axi_bram_ctrl_0]
-create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.0 axi_bram_ctrl_1
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:$BRAM_CONTROLLER_VERSION axi_bram_ctrl_1
 set_property -dict [list CONFIG.DATA_WIDTH {64} CONFIG.SINGLE_PORT_BRAM {1}] [get_bd_cells axi_bram_ctrl_1]
 create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:${BLK_MEM_GEN_VERSION} blk_mem_gen_0
 set_property -dict [list \

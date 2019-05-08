@@ -1,19 +1,7 @@
 create_bd_design "ic"
 set design_name ic
 
-# Set IP versions
-if { [version -short] == "2016.3" } {
-  set PS7_VERSION "5.5"
-  set XLCONCAT_VERSION "2.1"
-  set BLK_MEM_GEN_VERSION "8.3"
-  set MB_VERSION "10.0"
-} else { 
-  # 2017.2
-  set PS7_VERSION "5.5"
-  set XLCONCAT_VERSION "2.1"
-  set BLK_MEM_GEN_VERSION "8.3"
-  set MB_VERSION "10.0"
-}
+source ../tcl/versions.tcl
 
 # Create ports
 set pulp2host_gpio [ create_bd_port -dir I -from 31 -to 0 pulp2host_gpio ]
@@ -186,10 +174,15 @@ if { $::env(RAB_AX_LOG_EN) } {
     set rab_ar_bram_ctrl_host \
         [ create_bd_cell \
             -type ip \
-            -vlnv xilinx.com:ip:axi_bram_ctrl:4.0 \
+            -vlnv xilinx.com:ip:axi_bram_ctrl:$BRAM_CONTROLLER_VERSION \
             rab_ar_bram_ctrl_host \
         ]
-    set_property -dict [ list CONFIG.SINGLE_PORT_BRAM {1} CONFIG.PROTOCOL {AXI4LITE} ] $rab_ar_bram_ctrl_host
+    set_property -dict [ list \
+        CONFIG.SINGLE_PORT_BRAM {1} \
+        CONFIG.PROTOCOL {AXI4LITE} \
+        CONFIG.C_SELECT_XPM {0} \
+    ] $rab_ar_bram_ctrl_host
+    set_property CONFIG.READ_WRITE_MODE READ_WRITE [get_bd_intf_pins $rab_ar_bram_ctrl_host/BRAM_PORTA]
     connect_bd_intf_net \
         [ get_bd_intf_pins axi_crossbar_lite_host_clk/M01_AXI ] \
         [ get_bd_intf_pins rab_ar_bram_ctrl_host/S_AXI ]
@@ -209,10 +202,15 @@ if { $::env(RAB_AX_LOG_EN) } {
     set rab_aw_bram_ctrl_host \
         [ create_bd_cell \
             -type ip \
-            -vlnv xilinx.com:ip:axi_bram_ctrl:4.0 \
+            -vlnv xilinx.com:ip:axi_bram_ctrl:$BRAM_CONTROLLER_VERSION \
             rab_aw_bram_ctrl_host \
         ]
-    set_property -dict [ list CONFIG.SINGLE_PORT_BRAM {1} CONFIG.PROTOCOL {AXI4LITE} ] $rab_aw_bram_ctrl_host
+    set_property -dict [ list \
+        CONFIG.SINGLE_PORT_BRAM {1} \
+        CONFIG.PROTOCOL {AXI4LITE} \
+        CONFIG.C_SELECT_XPM {0} \
+    ] $rab_aw_bram_ctrl_host
+    set_property CONFIG.READ_WRITE_MODE READ_WRITE [get_bd_intf_pins $rab_aw_bram_ctrl_host/BRAM_PORTA]
     connect_bd_intf_net \
         [ get_bd_intf_pins axi_crossbar_lite_host_clk/M02_AXI ] \
         [ get_bd_intf_pins rab_aw_bram_ctrl_host/S_AXI ]
@@ -227,6 +225,11 @@ if { $::env(RAB_AX_LOG_EN) } {
     connect_bd_intf_net \
         [ get_bd_intf_pins rab_aw_bram_ctrl_host/BRAM_PORTA ] \
         [ get_bd_intf_ports rab_aw_bram ]
+
+    if { [version -short] == "2018.3" } {
+        set_property CONFIG.READ_WRITE_MODE READ_WRITE [get_bd_intf_ports /rab_ar_bram]
+        set_property CONFIG.READ_WRITE_MODE READ_WRITE [get_bd_intf_ports /rab_aw_bram]
+    }
 }
 
 ###############

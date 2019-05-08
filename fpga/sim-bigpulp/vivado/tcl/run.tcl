@@ -15,6 +15,8 @@ set_property board_part $::env(XILINX_BOARD) [current_project]
 
 set PULP_FPGA_SIM 1
 
+source ../../tcl/versions.tcl
+
 ##################################################################
 #
 #                          PULP_CLUSTER
@@ -135,14 +137,14 @@ if { $REPLACE_XILINX_DWIDTH_CONV } {
 
 # replace tsif with BRAM
 if { $REPLACE_XILINX_DWIDTH_CONV } {
-  create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.0 axi_bram_ctrl_tsif_replacement
+  create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:$BRAM_CONTROLLER_VERSION axi_bram_ctrl_tsif_replacement
   set_property -dict [list CONFIG.DATA_WIDTH {64} CONFIG.SINGLE_PORT_BRAM {1} CONFIG.ECC_TYPE {0}] [get_bd_cells axi_bram_ctrl_tsif_replacement]
 
   create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:${BLK_MEM_GEN_VERSION} blk_mem_gen_tsif_replacement
 
   connect_bd_intf_net [get_bd_intf_pins axi_clock_conv_rab_master/M_AXI] [get_bd_intf_pins axi_bram_ctrl_tsif_replacement/S_AXI]
 } else {
-  create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.0 axi_bram_ctrl_tsif_replacement
+  create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:$BRAM_CONTROLLER_VERSION axi_bram_ctrl_tsif_replacement
   set_property -dict [list CONFIG.DATA_WIDTH {128} CONFIG.SINGLE_PORT_BRAM {1} CONFIG.ECC_TYPE {0}] [get_bd_cells axi_bram_ctrl_tsif_replacement]
 
   create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:${BLK_MEM_GEN_VERSION} blk_mem_gen_tsif_replacement
