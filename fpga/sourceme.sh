@@ -30,10 +30,14 @@ elif [ "$BOARD" = "mini-itx" ]; then
   export RAB_AX_LOG_EN="1"
   export MOD_HOST_CLKS="0"
   export SDK_WORKSPACE="/scratch/$USER/$BOARD/zynqlinux/sdk"
-elif [ "$BOARD" = "te0808" ]; then
-  export XILINX_PART="xczu9eg-ffvc900-2-i-es2"
-  export XILINX_BOARD=""
-  #export XILINX_BOARD="trenz.biz:te0808_2es2_tebf0808:part0:2.0"
+elif [ "$BOARD" = "zcu102" -o "$BOARD" = "te0808" ]; then
+  if [ "$BOARD" = "zcu102" ]; then
+    export XILINX_PART="xczu9eg-ffvb1156-2-i"
+    export XILINX_BOARD="xilinx.com:zcu102:part0:3.0"
+  else
+    export XILINX_PART="xczu9eg-ffvc900-2-i-es2"
+    export XILINX_BOARD=""
+  fi
   export CLK_PERIOD_NS="10"
   export RAB_AX_LOG_EN="1"
   export MOD_HOST_CLKS="0"
