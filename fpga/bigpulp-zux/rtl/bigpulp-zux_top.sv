@@ -910,22 +910,7 @@ module bigpulp_zux_top
   // ██║     ╚██████╔╝███████╗██║         ███████║╚██████╔╝╚██████╗
   // ╚═╝      ╚═════╝ ╚══════╝╚═╝         ╚══════╝ ╚═════╝  ╚═════╝
   //
-  pulp_soc #(
-    // for simulation only: pulp_soc_stub.v used for implementation has no parameters
-`ifdef PULP_FPGA_SIM
-    .AXI_EXT_ADDR_WIDTH     ( AXI_EXT_ADDR_WIDTH ),
-    .AXI_ADDR_WIDTH         (                 32 ),
-    .AXI_DATA_WIDTH         (                 64 ),
-    .AXI_USER_WIDTH         (                  6 ),
-    .AXI_ID_EXT_S_WIDTH     (    AXI_HP_ID_WIDTH ),
-    .AXI_ID_EXT_S_ACP_WIDTH (   AXI_HPC_ID_WIDTH ),
-    .AXI_ID_EXT_M_WIDTH     (                  6 ),
-    .AXI_ID_SOC_S_WIDTH     (                  6 ),
-    .AXI_ID_SOC_M_WIDTH     (                  7 ),
-    .NB_CLUSTERS            (        NB_CLUSTERS ),
-    .NB_CORES               (           NB_CORES )
-`endif
-  ) pulp_soc_i (
+  pulp_soc pulp_soc_i (
     .clk_cluster_i       ( ClkClusterGated_C ),
     .clk_soc_i           ( ClkSocGated_C     ),
     .clk_soc_non_gated_i ( ClkSoc_C          ),
