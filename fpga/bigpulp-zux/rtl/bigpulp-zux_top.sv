@@ -155,7 +155,7 @@ module bigpulp_zux_top
   logic [31:0] pulp2host_gpio;
   logic [31:0] host2pulp_gpio;
 
-  wire [10:0] clking_axi_awaddr;  // input
+  wire [31:0] clking_axi_awaddr;  // input
   wire        clking_axi_awvalid; // input
   wire        clking_axi_awready; // output
   wire [31:0] clking_axi_wdata;   // input
@@ -165,7 +165,7 @@ module bigpulp_zux_top
   wire  [1:0] clking_axi_bresp;   // output
   wire        clking_axi_bvalid;  // output
   wire        clking_axi_bready;  // input
-  wire [10:0] clking_axi_araddr;  // input
+  wire [31:0] clking_axi_araddr;  // input
   wire        clking_axi_arvalid; // input
   wire        clking_axi_arready; // output
   wire [31:0] clking_axi_rdata;   // output
@@ -858,44 +858,44 @@ module bigpulp_zux_top
   //  ╚═════╝╚══════╝╚═╝  ╚═╝    ╚═╝  ╚═╝╚══════╝   ╚═╝        ╚═════╝ ╚══════╝╚═╝  ╚═══╝
   //
   clk_rst_gen clk_rst_gen_i (
-    .ClkRef_CI               ( ClkRef_C            ), // 100 MHz reference clock
-    .RstMaster_RBI           ( RstMaster_RB        ), // board reset
+    .ClkRef_CI               ( ClkRef_C                ), // 100 MHz reference clock
+    .RstMaster_RBI           ( RstMaster_RB            ), // board reset
 
-    .ClkIcHost_CI            ( ClkIcHost_C         ),
-    .RstIcHost_RBI           ( RstIcHost_RB        ), // needs to be combined with RstDebug_RBI and
-                                                      // synced to ClkIcHost_CI
-    .ClkEn_SI                ( ClkEn_S             ),
-    .RstDebug_RBI            ( ~RstDebug_R         ), // MicroBlaze Debug Module reset (active high)
-    .RstUser_RBI             ( RstUser_RB          ), // GPIO reset (axi_pulp_control)
+    .ClkIcHost_CI            ( ClkIcHost_C             ),
+    .RstIcHost_RBI           ( RstIcHost_RB            ), // needs to be combined with RstDebug_RBI and
+                                                          // synced to ClkIcHost_CI
+    .ClkEn_SI                ( ClkEn_S                 ),
+    .RstDebug_RBI            ( ~RstDebug_R             ), // MicroBlaze Debug Module reset (active high)
+    .RstUser_RBI             ( RstUser_RB              ), // GPIO reset (axi_pulp_control)
 
-    .clking_axi_awaddr       ( clking_axi_awaddr   ),
-    .clking_axi_awvalid      ( clking_axi_awvalid  ),
-    .clking_axi_awready      ( clking_axi_awready  ),
-    .clking_axi_wdata        ( clking_axi_wdata    ),
-    .clking_axi_wstrb        ( clking_axi_wstrb    ),
-    .clking_axi_wvalid       ( clking_axi_wvalid   ),
-    .clking_axi_wready       ( clking_axi_wready   ),
-    .clking_axi_bresp        ( clking_axi_bresp    ),
-    .clking_axi_bvalid       ( clking_axi_bvalid   ),
-    .clking_axi_bready       ( clking_axi_bready   ),
-    .clking_axi_araddr       ( clking_axi_araddr   ),
-    .clking_axi_arvalid      ( clking_axi_arvalid  ),
-    .clking_axi_arready      ( clking_axi_arready  ),
-    .clking_axi_rdata        ( clking_axi_rdata    ),
-    .clking_axi_rresp        ( clking_axi_rresp    ),
-    .clking_axi_rvalid       ( clking_axi_rvalid   ),
-    .clking_axi_rready       ( clking_axi_rready   ),
+    .clking_axi_awaddr       ( clking_axi_awaddr[10:0] ),
+    .clking_axi_awvalid      ( clking_axi_awvalid      ),
+    .clking_axi_awready      ( clking_axi_awready      ),
+    .clking_axi_wdata        ( clking_axi_wdata        ),
+    .clking_axi_wstrb        ( clking_axi_wstrb        ),
+    .clking_axi_wvalid       ( clking_axi_wvalid       ),
+    .clking_axi_wready       ( clking_axi_wready       ),
+    .clking_axi_bresp        ( clking_axi_bresp        ),
+    .clking_axi_bvalid       ( clking_axi_bvalid       ),
+    .clking_axi_bready       ( clking_axi_bready       ),
+    .clking_axi_araddr       ( clking_axi_araddr[10:0] ),
+    .clking_axi_arvalid      ( clking_axi_arvalid      ),
+    .clking_axi_arready      ( clking_axi_arready      ),
+    .clking_axi_rdata        ( clking_axi_rdata        ),
+    .clking_axi_rresp        ( clking_axi_rresp        ),
+    .clking_axi_rvalid       ( clking_axi_rvalid       ),
+    .clking_axi_rready       ( clking_axi_rready       ),
 
-    .ClkSoc_CO               ( ClkSoc_C            ),
-    .ClkSocGated_CO          ( ClkSocGated_C       ),
-    .ClkCluster_CO           ( ClkCluster_C        ),
-    .ClkClusterGated_CO      ( ClkClusterGated_C   ),
+    .ClkSoc_CO               ( ClkSoc_C                ),
+    .ClkSocGated_CO          ( ClkSocGated_C           ),
+    .ClkCluster_CO           ( ClkCluster_C            ),
+    .ClkClusterGated_CO      ( ClkClusterGated_C       ),
 
-    .RstSoc_RBO              ( RstSoc_RB           ), // controllable by GPIO reset
-    .RstIcPulp_RBO           ( RstIcPulp_RB        ), // same as RstSoc_RBO except for GPIO reset, synced to ClkSoc_CO
-    .RstIcPulpGated_RBO      ( RstIcPulpGated_RB   ), // same as RstSoc_RBO except for GPIO reset, synced to ClkSocGated_CO
-    .RstIcHost_RBO           ( RstIcHostSync_RB    ), // use for ic_wrapper
-    .RstIcHostClkConv_RBO    ( RstIcHostClkConv_RB )  // reset clock conv master interfaces running at ClkIcHost_C in zusys_wrapper
+    .RstSoc_RBO              ( RstSoc_RB               ), // controllable by GPIO reset
+    .RstIcPulp_RBO           ( RstIcPulp_RB            ), // same as RstSoc_RBO except for GPIO reset, synced to ClkSoc_CO
+    .RstIcPulpGated_RBO      ( RstIcPulpGated_RB       ), // same as RstSoc_RBO except for GPIO reset, synced to ClkSocGated_CO
+    .RstIcHost_RBO           ( RstIcHostSync_RB        ), // use for ic_wrapper
+    .RstIcHostClkConv_RBO    ( RstIcHostClkConv_RB     )  // reset clock conv master interfaces running at ClkIcHost_C in zusys_wrapper
   );
 
   // ██████╗ ██╗   ██╗██╗     ██████╗     ███████╗ ██████╗  ██████╗
