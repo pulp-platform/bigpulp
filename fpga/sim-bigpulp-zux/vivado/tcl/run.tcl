@@ -65,6 +65,8 @@ read_ip $FPGA_IPS/xilinx_mailbox/ip/xilinx_mailbox.xci
 synth_ip [get_ips xilinx_mailbox]
 read_ip $FPGA_IPS/xilinx_axi_xbar_rab_cfg/ip/xilinx_axi_xbar_rab_cfg.xci
 synth_ip [get_ips xilinx_axi_xbar_rab_cfg]
+read_ip $FPGA_IPS/xilinx_axi_dwidth_conv_rab_cfg/ip/xilinx_axi_dwidth_conv_rab_cfg.xci
+synth_ip [get_ips xilinx_axi_dwidth_conv_rab_cfg]
 
 # add IP wrappers in FPGA_RTL
 add_files -norecurse $FPGA_RTL/socbus_to_rab_cfg_conv.sv
