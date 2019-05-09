@@ -55,7 +55,6 @@ set IC_FREQ_HZ [expr ${IC_FREQ_MHZ} * 1000000]
 set clking_axi [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:aximm_rtl:1.0 clking_axi ]
 set_property CONFIG.ADDR_WIDTH {32}        $clking_axi
 set_property CONFIG.DATA_WIDTH {32}        $clking_axi
-set_property CONFIG.FREQ_HZ    $IC_FREQ_HZ $clking_axi
 set_property CONFIG.PROTOCOL   {AXI4LITE}  $clking_axi
 
 set intr_axi [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:aximm_rtl:1.0 intr_axi ]
