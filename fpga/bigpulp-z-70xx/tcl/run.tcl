@@ -64,7 +64,7 @@ set IC_FREQ_MHZ [expr ${IC_FREQ_HZ} / 1000000]
 if [info exists ::env(HOST_CLK_MHZ)] {
   set HOST_CLK_MHZ $::env(HOST_CLK_MHZ)
 } else {
-  set HOST_CLK_MHZ 666 # default for Zynq-7000
+  set HOST_CLK_MHZ 666 ;# default for Zynq-7000
 }
 
 # create block design
