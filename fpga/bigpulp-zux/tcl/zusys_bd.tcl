@@ -140,6 +140,7 @@ set RstIcPulpGated_RBI    [ create_bd_port -dir I -type rst RstIcPulpGated_RBI ]
 
 set_property CONFIG.ASSOCIATED_BUSIF {rab_lite:rab_slave} $ClkIcPulp_CI
 set_property CONFIG.ASSOCIATED_BUSIF {rab_master:rab_acp} $ClkIcPulpGated_CI
+set_property CONFIG.ASSOCIATED_BUSIF {clking_axi}         $ClkIcHost_CO
 set_property CONFIG.ASSOCIATED_RESET {RstIcPulp_RBI}      $ClkIcPulp_CI
 set_property CONFIG.ASSOCIATED_RESET {RstIcPulpGated_RBI} $ClkIcPulpGated_CI
 set_property CONFIG.ASSOCIATED_RESET {RstIcHost_RBI}      $ClkIcHost_CO
