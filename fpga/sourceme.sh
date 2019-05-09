@@ -32,8 +32,8 @@ elif [ "$BOARD" = "mini-itx" ]; then
   export SDK_WORKSPACE="/scratch/$USER/$BOARD/zynqlinux/sdk"
 elif [ "$BOARD" = "zcu102" -o "$BOARD" = "te0808" ]; then
   if [ "$BOARD" = "zcu102" ]; then
-    export XILINX_PART="xczu9eg-ffvb1156-2-i"
-    export XILINX_BOARD="xilinx.com:zcu102:part0:3.0"
+    export XILINX_PART="xczu9eg-ffvb1156-2-e"
+    export XILINX_BOARD="xilinx.com:zcu102:part0:3.1"
   else
     export XILINX_PART="xczu9eg-ffvc900-2-i-es2"
     export XILINX_BOARD=""
