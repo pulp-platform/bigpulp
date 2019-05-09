@@ -76,8 +76,8 @@ import CfMath::log2;
   `define AXI_ID_SOC_M_WIDTH     7 // AXI ID of SoC Bus masters
   `define L2_SIZE          64*1024 // Bytes    
   // CLUSTER
-  `define NB_CORES               2
-  `define NB_TCDM_BANKS          4
+  `define NB_CORES               1
+  `define NB_TCDM_BANKS          2
   `define TCDM_SIZE        32*1024 // Bytes
   `define MCHAN_BURST_LENGTH   256 // max burst size in Bytes - any power of 2 value from 8 to 2048
   `define NB_OUTSND_BURSTS       2 // max number of outstanding burst transactions

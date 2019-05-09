@@ -32,7 +32,7 @@
 // --=========================================================================--
 
 `ifdef ZEDBOARD
-  localparam NB_CORES = 2;
+  localparam NB_CORES = 1;
 `else 
   localparam NB_CORES = 8;
 `endif
