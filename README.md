@@ -101,7 +101,7 @@ IP cores.
 After having downloaded the PULP IP cores, having set up the `sourceme.sh` script
 and having generated the Xilinx IP cores as shown in the preparation section, you
 need to download the free AMBA4 AXI-Lite Verification IP from SysWip:
-http://syswip.com/axi4-lite-verification-ip
+[AMBA4 AXI-Lite Verification IP](http://syswip.com/?p=528)
 and extract the archive.
 
 Then, open the `sourceme.sh` script and adjust the `AXI4LITE_VIP_PATH` variable
