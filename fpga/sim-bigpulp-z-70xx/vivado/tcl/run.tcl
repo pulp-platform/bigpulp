@@ -138,7 +138,10 @@ if [info exists ::env(HOST_CLK_MHZ)] {
 #
 ##################################################################
 set BIGPULP ../../bigpulp-z-70xx
-source $BIGPULP/tcl/ps7_bd.tcl
+# source $BIGPULP/tcl/ps7_bd.tcl
+cd $BIGPULP
+source tcl/ps7_bd.tcl
+cd ../sim-bigpulp-z-70xx/vivado
 
 # Clocks and Resets replacement
 disconnect_bd_net /processing_system7_0_FCLK_CLK0 [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK]
