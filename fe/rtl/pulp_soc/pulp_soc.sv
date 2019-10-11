@@ -557,6 +557,8 @@ module pulp_soc
     pulp_cluster_wrap #(
       // cluster parameters
       .NB_CORES              ( `NB_CORES             ),
+      .NB_HWACC_PORTS        ( 1                     ),
+      .NB_SPERIPHS           ( 8                     ),
 
       // AXI parameters
       .AXI_ADDR_WIDTH        ( AXI_ADDR_WIDTH        ),
@@ -642,7 +644,7 @@ module pulp_soc
     ) dc_fifo_data_slave_bus_i (
       .clk_i            ( clk_soc_i                       ),
       .rst_ni           ( rstn_soc_sync                   ),
-      .test_cgbypass_i  ( 1'b0                            ),      
+      .test_cgbypass_i  ( 1'b0                            ),
       .isolate_i        ( 1'b0                            ),
       .axi_slave        ( s_data_slave_bus_id_remapped[i] ), // FROM REMAPPER
       .axi_master_async ( s_data_slave_bus_async[i]       )  // TO CLUSTER
