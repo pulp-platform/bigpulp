@@ -118,7 +118,7 @@ module testbench;
 
   uart_rx #(
     .CLK_FREQ_HZ  (50000000),
-    .BAUD_RATE    (115200)
+    .BAUD_RATE    (625000)
   ) i_uarx_rx (
     .clk_i        (DUT.ClkSocGated_C),
     .rst_ni       (DUT.RstSoc_RB),
