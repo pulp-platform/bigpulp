@@ -1,7 +1,7 @@
 create_bd_design "ps7"
 set design_name ps7
 
-source ../tcl/versions.tcl
+source ../../tcl/versions.tcl
 
 # Create interface ports
 set clking_axi [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:aximm_rtl:1.0 clking_axi ]
