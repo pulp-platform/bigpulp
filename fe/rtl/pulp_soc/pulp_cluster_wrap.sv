@@ -215,106 +215,106 @@ module pulp_cluster_wrap
 
   always_comb
     begin : data_master_if
-      data_master.aw_writetoken    <= data_master_aw_writetoken_o ; // output
-      data_master.aw_addr          <= data_master_aw_addr_o ;       // output
-      data_master.aw_prot          <= data_master_aw_prot_o ;       // output
-      data_master.aw_region        <= data_master_aw_region_o ;     // output
-      data_master.aw_len           <= data_master_aw_len_o ;        // output
-      data_master.aw_size          <= data_master_aw_size_o ;       // output
-      data_master.aw_burst         <= data_master_aw_burst_o ;      // output
-      data_master.aw_lock          <= data_master_aw_lock_o ;       // output
-      data_master.aw_cache         <= data_master_aw_cache_o ;      // output
-      data_master.aw_qos           <= data_master_aw_qos_o ;        // output
-      data_master.aw_id            <= data_master_aw_id_o ;         // output
-      data_master.aw_user          <= data_master_aw_user_o ;       // output
-      data_master_aw_readpointer_i <= data_master.aw_readpointer ;  // input
+      data_master.aw_writetoken    = data_master_aw_writetoken_o ; // output
+      data_master.aw_addr          = data_master_aw_addr_o ;       // output
+      data_master.aw_prot          = data_master_aw_prot_o ;       // output
+      data_master.aw_region        = data_master_aw_region_o ;     // output
+      data_master.aw_len           = data_master_aw_len_o ;        // output
+      data_master.aw_size          = data_master_aw_size_o ;       // output
+      data_master.aw_burst         = data_master_aw_burst_o ;      // output
+      data_master.aw_lock          = data_master_aw_lock_o ;       // output
+      data_master.aw_cache         = data_master_aw_cache_o ;      // output
+      data_master.aw_qos           = data_master_aw_qos_o ;        // output
+      data_master.aw_id            = data_master_aw_id_o ;         // output
+      data_master.aw_user          = data_master_aw_user_o ;       // output
+      data_master_aw_readpointer_i = data_master.aw_readpointer ;  // input
 
-      data_master.ar_writetoken    <= data_master_ar_writetoken_o ; // output
-      data_master.ar_addr          <= data_master_ar_addr_o ;       // output
-      data_master.ar_prot          <= data_master_ar_prot_o ;       // output
-      data_master.ar_region        <= data_master_ar_region_o ;     // output
-      data_master.ar_len           <= data_master_ar_len_o ;        // output
-      data_master.ar_size          <= data_master_ar_size_o ;       // output
-      data_master.ar_burst         <= data_master_ar_burst_o ;      // output
-      data_master.ar_lock          <= data_master_ar_lock_o ;       // output
-      data_master.ar_cache         <= data_master_ar_cache_o ;      // output
-      data_master.ar_qos           <= data_master_ar_qos_o ;        // output
-      data_master.ar_id            <= data_master_ar_id_o ;         // output
-      data_master.ar_user          <= data_master_ar_user_o ;       // output
-      data_master_ar_readpointer_i <= data_master.ar_readpointer ;  // input
+      data_master.ar_writetoken    = data_master_ar_writetoken_o ; // output
+      data_master.ar_addr          = data_master_ar_addr_o ;       // output
+      data_master.ar_prot          = data_master_ar_prot_o ;       // output
+      data_master.ar_region        = data_master_ar_region_o ;     // output
+      data_master.ar_len           = data_master_ar_len_o ;        // output
+      data_master.ar_size          = data_master_ar_size_o ;       // output
+      data_master.ar_burst         = data_master_ar_burst_o ;      // output
+      data_master.ar_lock          = data_master_ar_lock_o ;       // output
+      data_master.ar_cache         = data_master_ar_cache_o ;      // output
+      data_master.ar_qos           = data_master_ar_qos_o ;        // output
+      data_master.ar_id            = data_master_ar_id_o ;         // output
+      data_master.ar_user          = data_master_ar_user_o ;       // output
+      data_master_ar_readpointer_i = data_master.ar_readpointer ;  // input
 
-      data_master.w_writetoken     <= data_master_w_writetoken_o ;  // output
-      data_master.w_data           <= data_master_w_data_o ;        // output
-      data_master.w_strb           <= data_master_w_strb_o ;        // output
-      data_master.w_user           <= data_master_w_user_o ;        // output
-      data_master.w_last           <= data_master_w_last_o ;        // output      
-      data_master_w_readpointer_i  <= data_master.w_readpointer ;   // input
+      data_master.w_writetoken     = data_master_w_writetoken_o ;  // output
+      data_master.w_data           = data_master_w_data_o ;        // output
+      data_master.w_strb           = data_master_w_strb_o ;        // output
+      data_master.w_user           = data_master_w_user_o ;        // output
+      data_master.w_last           = data_master_w_last_o ;        // output
+      data_master_w_readpointer_i  = data_master.w_readpointer ;   // input
 
-      data_master_r_writetoken_i   <= data_master.r_writetoken ;    // input
-      data_master_r_data_i         <= data_master.r_data ;          // input
-      data_master_r_resp_i         <= data_master.r_resp ;          // input
-      data_master_r_last_i         <= data_master.r_last ;          // input
-      data_master_r_id_i           <= data_master.r_id ;            // input
-      data_master_r_user_i         <= data_master.r_user ;          // input
-      data_master.r_readpointer    <= data_master_r_readpointer_o ; // output
+      data_master_r_writetoken_i   = data_master.r_writetoken ;    // input
+      data_master_r_data_i         = data_master.r_data ;          // input
+      data_master_r_resp_i         = data_master.r_resp ;          // input
+      data_master_r_last_i         = data_master.r_last ;          // input
+      data_master_r_id_i           = data_master.r_id ;            // input
+      data_master_r_user_i         = data_master.r_user ;          // input
+      data_master.r_readpointer    = data_master_r_readpointer_o ; // output
 
-      data_master_b_writetoken_i   <= data_master.b_writetoken ;    // input
-      data_master_b_resp_i         <= data_master.b_resp ;          // input
-      data_master_b_id_i           <= data_master.b_id ;            // input
-      data_master_b_user_i         <= data_master.b_user ;          // input
-      data_master.b_readpointer    <= data_master_b_readpointer_o ; // output
+      data_master_b_writetoken_i   = data_master.b_writetoken ;    // input
+      data_master_b_resp_i         = data_master.b_resp ;          // input
+      data_master_b_id_i           = data_master.b_id ;            // input
+      data_master_b_user_i         = data_master.b_user ;          // input
+      data_master.b_readpointer    = data_master_b_readpointer_o ; // output
     end
 
   always_comb
     begin : data_slave_if
-      data_slave_aw_writetoken_i <= data_slave.aw_writetoken ;    // input
-      data_slave_aw_addr_i       <= data_slave.aw_addr ;          // input
-      data_slave_aw_prot_i       <= data_slave.aw_prot ;          // input
-      data_slave_aw_region_i     <= data_slave.aw_region ;        // input
-      data_slave_aw_len_i        <= data_slave.aw_len ;           // input
-      data_slave_aw_size_i       <= data_slave.aw_size ;          // input
-      data_slave_aw_burst_i      <= data_slave.aw_burst ;         // input
-      data_slave_aw_lock_i       <= data_slave.aw_lock ;          // input
-      data_slave_aw_cache_i      <= data_slave.aw_cache ;         // input
-      data_slave_aw_qos_i        <= data_slave.aw_qos ;           // input
-      data_slave_aw_id_i         <= data_slave.aw_id ;            // input
-      data_slave_aw_user_i       <= data_slave.aw_user ;          // input
-      data_slave.aw_readpointer  <= data_slave_aw_readpointer_o ; // output
+      data_slave_aw_writetoken_i = data_slave.aw_writetoken ;    // input
+      data_slave_aw_addr_i       = data_slave.aw_addr ;          // input
+      data_slave_aw_prot_i       = data_slave.aw_prot ;          // input
+      data_slave_aw_region_i     = data_slave.aw_region ;        // input
+      data_slave_aw_len_i        = data_slave.aw_len ;           // input
+      data_slave_aw_size_i       = data_slave.aw_size ;          // input
+      data_slave_aw_burst_i      = data_slave.aw_burst ;         // input
+      data_slave_aw_lock_i       = data_slave.aw_lock ;          // input
+      data_slave_aw_cache_i      = data_slave.aw_cache ;         // input
+      data_slave_aw_qos_i        = data_slave.aw_qos ;           // input
+      data_slave_aw_id_i         = data_slave.aw_id ;            // input
+      data_slave_aw_user_i       = data_slave.aw_user ;          // input
+      data_slave.aw_readpointer  = data_slave_aw_readpointer_o ; // output
 
-      data_slave_ar_writetoken_i <= data_slave.ar_writetoken ;    // input
-      data_slave_ar_addr_i       <= data_slave.ar_addr ;          // input
-      data_slave_ar_prot_i       <= data_slave.ar_prot ;          // input
-      data_slave_ar_region_i     <= data_slave.ar_region ;        // input
-      data_slave_ar_len_i        <= data_slave.ar_len ;           // input
-      data_slave_ar_size_i       <= data_slave.ar_size ;          // input
-      data_slave_ar_burst_i      <= data_slave.ar_burst ;         // input
-      data_slave_ar_lock_i       <= data_slave.ar_lock ;          // input
-      data_slave_ar_cache_i      <= data_slave.ar_cache ;         // input
-      data_slave_ar_qos_i        <= data_slave.ar_qos ;           // input
-      data_slave_ar_id_i         <= data_slave.ar_id ;            // input
-      data_slave_ar_user_i       <= data_slave.ar_user ;          // input
-      data_slave.ar_readpointer  <= data_slave_ar_readpointer_o ; // output
+      data_slave_ar_writetoken_i = data_slave.ar_writetoken ;    // input
+      data_slave_ar_addr_i       = data_slave.ar_addr ;          // input
+      data_slave_ar_prot_i       = data_slave.ar_prot ;          // input
+      data_slave_ar_region_i     = data_slave.ar_region ;        // input
+      data_slave_ar_len_i        = data_slave.ar_len ;           // input
+      data_slave_ar_size_i       = data_slave.ar_size ;          // input
+      data_slave_ar_burst_i      = data_slave.ar_burst ;         // input
+      data_slave_ar_lock_i       = data_slave.ar_lock ;          // input
+      data_slave_ar_cache_i      = data_slave.ar_cache ;         // input
+      data_slave_ar_qos_i        = data_slave.ar_qos ;           // input
+      data_slave_ar_id_i         = data_slave.ar_id ;            // input
+      data_slave_ar_user_i       = data_slave.ar_user ;          // input
+      data_slave.ar_readpointer  = data_slave_ar_readpointer_o ; // output
 
-      data_slave_w_writetoken_i  <= data_slave.w_writetoken ;     // input
-      data_slave_w_data_i        <= data_slave.w_data ;           // input
-      data_slave_w_strb_i        <= data_slave.w_strb ;           // input
-      data_slave_w_user_i        <= data_slave.w_user ;           // input
-      data_slave_w_last_i        <= data_slave.w_last ;           // input
-      data_slave.w_readpointer   <= data_slave_w_readpointer_o ;  // output
+      data_slave_w_writetoken_i  = data_slave.w_writetoken ;     // input
+      data_slave_w_data_i        = data_slave.w_data ;           // input
+      data_slave_w_strb_i        = data_slave.w_strb ;           // input
+      data_slave_w_user_i        = data_slave.w_user ;           // input
+      data_slave_w_last_i        = data_slave.w_last ;           // input
+      data_slave.w_readpointer   = data_slave_w_readpointer_o ;  // output
       
-      data_slave.r_data          <= data_slave_r_data_o ;         // output
-      data_slave.r_resp          <= data_slave_r_resp_o ;         // output
-      data_slave.r_id            <= data_slave_r_id_o ;           // output
-      data_slave.r_user          <= data_slave_r_user_o ;         // output
-      data_slave.r_last          <= data_slave_r_last_o ;         // output
-      data_slave.r_writetoken    <= data_slave_r_writetoken_o ;   // output
-      data_slave_r_readpointer_i <= data_slave.r_readpointer ;    // input
+      data_slave.r_data          = data_slave_r_data_o ;         // output
+      data_slave.r_resp          = data_slave_r_resp_o ;         // output
+      data_slave.r_id            = data_slave_r_id_o ;           // output
+      data_slave.r_user          = data_slave_r_user_o ;         // output
+      data_slave.r_last          = data_slave_r_last_o ;         // output
+      data_slave.r_writetoken    = data_slave_r_writetoken_o ;   // output
+      data_slave_r_readpointer_i = data_slave.r_readpointer ;    // input
       
-      data_slave.b_resp          <= data_slave_b_resp_o ;         // output
-      data_slave.b_id            <= data_slave_b_id_o ;           // output
-      data_slave.b_user          <= data_slave_b_user_o ;         // output
-      data_slave.b_writetoken    <= data_slave_b_writetoken_o ;   // output
-      data_slave_b_readpointer_i <= data_slave.b_readpointer ;    // input
+      data_slave.b_resp          = data_slave_b_resp_o ;         // output
+      data_slave.b_id            = data_slave_b_id_o ;           // output
+      data_slave.b_user          = data_slave_b_user_o ;         // output
+      data_slave.b_writetoken    = data_slave_b_writetoken_o ;   // output
+      data_slave_b_readpointer_i = data_slave.b_readpointer ;    // input
     end
 
   pulp_cluster #(
