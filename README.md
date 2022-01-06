@@ -1,3 +1,7 @@
+# DEPRECATED
+
+This repository is part of a deprecated version of HERO.  Please refer to the [current HERO repository](https://github.com/pulp-platform/hero) for the current accelerator hardware.
+
 # bigPULP
 
 ![HERO hardware overview with bigPULP implemented on FPGA](doc/hero_hw_overview.png)
